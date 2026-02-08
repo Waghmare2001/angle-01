@@ -2,184 +2,175 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Angle ❤️</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>For My Valentine ❤️</title>
 <style>
-  body {
-    margin: 0;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #ff758c, #ff7eb3);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .slide {
-    display: none;
-    background: white;
-    padding: 25px;
-    border-radius: 20px;
-    text-align: center;
-    width: 85%;
-    max-width: 360px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    position: relative;
-    z-index: 2;
-  }
-
-  .slide.active {
-    display: block;
-  }
-
-  h1 { color: #ff4d6d; }
-  p { font-size: 18px; color: #333; }
-
-  img {
-    width: 100%;
-    border-radius: 15px;
-    margin-top: 10px;
-  }
-
-  button {
-    margin-top: 15px;
-    background: #ff4d6d;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    font-size: 16px;
-    border-radius: 25px;
-    cursor: pointer;
-  }
-
-  .buttons {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 15px;
-  }
-
-  .no {
-    background: #ccc;
-    color: #000;
-  }
-
-  /* Floating Hearts */
-  .heart {
-    position: absolute;
-    bottom: -20px;
-    font-size: 20px;
-    animation: floatUp 5s linear infinite;
-    opacity: 0.8;
-    z-index: 1;
-  }
-
-  @keyframes floatUp {
-    0% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(-120vh); opacity: 0; }
-  }
-
-  /* Heart Explosion */
-  .burst {
-    position: fixed;
-    font-size: 24px;
-    animation: burst 1.2s ease-out forwards;
-    pointer-events: none;
-    z-index: 3;
-  }
-
-  @keyframes burst {
-    0% { transform: scale(0); opacity: 1; }
-    100% { transform: scale(1.5) translate(var(--x), var(--y)); opacity: 0; }
-  }
+*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+body{
+  background:linear-gradient(135deg,#ff758c,#ff7eb3);
+  min-height:100svh;display:flex;align-items:center;justify-content:center;
+  color:#fff;overflow:hidden
+}
+.card{
+  width:94%;max-width:380px;min-height:520px;
+  background:rgba(255,255,255,.18);backdrop-filter:blur(12px);
+  border-radius:24px;padding:22px;text-align:center;
+  box-shadow:0 25px 45px rgba(0,0,0,.25);
+  display:flex;flex-direction:column;justify-content:center
+}
+.hidden{display:none}
+h1{font-size:1.55rem;margin-bottom:10px}
+p{font-size:1rem;line-height:1.55;margin-bottom:16px}
+.heart{font-size:3rem;animation:pulse 1.3s infinite;margin:12px 0 18px}
+button{border:none;border-radius:999px;padding:16px 28px;font-size:1.05rem;font-weight:700;background:#fff;color:#ff4f81;margin-top:12px}
+.balloon{position:fixed;bottom:-50px;font-size:2rem;animation:floatUp 6s linear forwards;pointer-events:none}
+.slider{
+  width:100%;
+  height:360px; /* optimized for 768x1344 portrait images */
+  border-radius:18px;
+  overflow:hidden;
+  margin:14px 0
+}
+.slider img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:none
+}
+.slider img{width:100%;height:100%;object-fit:cover;display:none}
+.slider img.active{display:block}
+.explode{position:fixed;left:50%;top:50%;animation:burst 1.4s ease-out forwards;pointer-events:none}
+@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.15)}100%{transform:scale(1)}}
+@keyframes floatUp{from{transform:translateY(0)}to{transform:translateY(-110svh);opacity:0}}
+@keyframes burst{0%{transform:translate(-50%,-50%) scale(0);opacity:1}100%{transform:translate(var(--x),var(--y)) scale(2);opacity:0}}
 </style>
 </head>
-
 <body>
 
-<!-- Slide 1 -->
-<div class="slide active">
-  <h1>❤️ Happy Valentine’s Day ❤️</h1>
-  <p>Angle, this is something special just for you 🌹</p>
-  <button onclick="nextSlide()">Next 💕</button>
+<div class="card" id="p1">
+  <h1>Hey Angel 💕</h1>
+  <div class="heart">💖</div>
+  <p>Something special is coming just for you…</p>
+  <button onclick="go('p2')">Start 💖</button>
 </div>
 
-<!-- Slide 2 -->
-<div class="slide">
-  <h1>💌 My Message 💌</h1>
-  <p>
-    You are my happiness,  
-    my calm, and my favorite feeling 💖  
-    Every day is better with you ✨
-  </p>
-  <button onclick="nextSlide()">Next 💖</button>
+<div class="card hidden" id="p2">
+  <h1>Angelie Ballasta</h1>
+  <div class="heart">💓</div>
+  <p>I have something to tell you…<br>Something that will change everything.</p>
+  <button onclick="go('p3')">Tap to know 💫</button>
 </div>
 
-<!-- Slide 3 -->
-<div class="slide">
-  <h1>📸 Us 💞</h1>
-  <img src="her-photo.png" alt="Angle">
-  <p>Will you be my Valentine forever? 💍❤️</p>
+<div class="card hidden" id="p3">
+  
+  <div class="heart">🎁</div>
+  <p>Do you like surprises? 😌<br>I promise it’s worth it 💖</p>
+  <button onclick="go('p4')">YES 😍</button>
+  <button onclick="runAway(this)">NO 🙈</button>
+</div>
 
-  <div class="buttons">
-    <button onclick="yesClicked()">YES 💖</button>
-    <button class="no" id="noBtn">NO 😜</button>
+<div class="card hidden" id="p4">
+  <h1>Be Honest… 💕</h1>
+  <div class="heart">💓</div>
+  <p>Do you like me? 😳</p>
+  <button onclick="go('p5')">YES 💖</button>
+  <button onclick="runAway(this)">NO 😅</button>
+</div>
+
+<div class="card hidden" id="p5">
+  <h1>For You… ❤️</h1>
+   <p>This is what I wanted to say for so long…<br>Watch the balloons carry my message to you</p>
+  <button onclick="loveMessage()">Watch balloons</button>
+  <button onclick="go('p6')">There's  more I want to show you</button>
+
+</div>
+
+<div class="card hidden" id="p6">
+
+  <div class="slider" id="slider">
+    <img src="img1.png" class="active">
+    <img src="img2.png">
+    <img src="img3.png">
+    <img src="img4.png">
   </div>
+  <button onclick="go('p7')">See the message 💌</button>
+</div>
+
+<div class="card hidden" id="p7">
+  <h1>My Heart Is Yours ❤️</h1>
+  <p>From the moment you came into my life,<br>everything started to change.</p>
+  <p>You are not just my friend,<br>you're the most special part of my life.</p>
+  <p>i don't know what future holds, but I<br> One thing for sure.<br> I want that future with you.</p>
+
+  <h5>Will you be my valentine forever?</h5>
+  <button onclick="heartExplosion()">Yes 💘</button>
 </div>
 
 <script>
-  // Slide control
-  let current = 0;
-  const slides = document.querySelectorAll(".slide");
+function go(id){
+  ['p1','p2','p3','p4','p5','p6','p7'].forEach(p=>{
+    const el=document.getElementById(p);
+    if(el) el.classList.add('hidden');
+  });
+  document.getElementById(id).classList.remove('hidden');
+  if(id==='p6') startSlider();
+}
 
-  function nextSlide() {
-    slides[current].classList.remove("active");
-    current++;
-    slides[current].classList.add("active");
+function runAway(b){
+  b.style.position='absolute';
+  b.style.left=Math.random()*70+'vw';
+  b.style.top=Math.random()*70+'vh';
+}
+
+function loveMessage(){
+    const words=['I','Love','You'];
+    let i=0;
+    const holder=document.getElementById('p5');
+
+    const timer=setInterval(()=>{
+      if(i>=words.length){
+        clearInterval(timer);
+        setTimeout(()=>{
+          const text=document.createElement('h1');
+          text.innerText='❤️';
+          text.style.marginTop='20px';
+          text.style.animation='pulse 1.5s infinite';
+          holder.appendChild(text);
+        },1500);
+        return;
+      }
+      const el=document.createElement('div');
+      el.className='balloon';
+      el.innerHTML='❤️<br>'+words[i];
+      el.style.left=45+i*8+'vw';
+      document.body.appendChild(el);
+      setTimeout(()=>el.remove(),6000);
+      i++;
+    },1200);
   }
+function startSlider(){
+  const imgs=document.querySelectorAll('#slider img');
+  let index=0;
+  setInterval(()=>{
+    imgs.forEach(img=>img.classList.remove('active'));
+    index=(index+1)%imgs.length;
+    imgs[index].classList.add('active');
+  },2000);
+}
 
-  // Floating hearts
-  setInterval(() => {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "💘";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (3 + Math.random() * 3) + "s";
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 6000);
-  }, 400);
-
-  // NO button runs away 😄
-  const noBtn = document.getElementById("noBtn");
-  noBtn.addEventListener("mouseover", moveNo);
-  noBtn.addEventListener("touchstart", moveNo);
-
-  function moveNo() {
-    noBtn.style.position = "absolute";
-    noBtn.style.left = Math.random() * 220 + "px";
-    noBtn.style.top = Math.random() * 220 + "px";
+function heartExplosion(){
+  for(let i=0;i<30;i++){
+    const h=document.createElement('div');
+    h.className='explode';
+    h.innerText='❤️';
+    h.style.setProperty('--x',(Math.random()-0.5)*300+'px');
+    h.style.setProperty('--y',(Math.random()-0.5)*300+'px');
+    h.style.fontSize=(18+Math.random()*22)+'px';
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),1500);
   }
-
-  // YES = HEART EXPLOSION 🏆💘
-  function yesClicked() {
-    for (let i = 0; i < 30; i++) {
-      const heart = document.createElement("div");
-      heart.className = "burst";
-      heart.innerHTML = "💖";
-      heart.style.left = "50%";
-      heart.style.top = "50%";
-      heart.style.setProperty("--x", (Math.random()*300 - 150) + "px");
-      heart.style.setProperty("--y", (Math.random()*300 - 150) + "px");
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 1200);
-    }
-
-    setTimeout(() => {
-      alert("She said YES 💍💖\nYou win forever 🏆");
-    }, 400);
-  }
+}
 </script>
-
 </body>
 </html>
