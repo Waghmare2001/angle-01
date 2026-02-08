@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Angle ❤️</title>
+
+<style>
+  body {
+    margin: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide {
+    display: none;
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    width: 85%;
+    max-width: 360px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 2;
+  }
+
+  .slide.active {
+    display: block;
+  }
+
+  h1 { color: #ff4d6d; }
+  p { font-size: 18px; color: #333; }
+
+  img {
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 10px;
+  }
+
+  button {
+    margin-top: 15px;
+    background: #ff4d6d;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+  }
+
+  .no {
+    background: #ccc;
+    color: #000;
+  }
+
+  /* Floating Hearts */
+  .heart {
+    position: absolute;
+    bottom: -20px;
+    font-size: 20px;
+    animation: floatUp 5s linear infinite;
+    opacity: 0.8;
+    z-index: 1;
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-120vh); opacity: 0; }
+  }
+
+  /* Heart Explosion */
+  .burst {
+    position: fixed;
+    font-size: 24px;
+    animation: burst 1.2s ease-out forwards;
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  @keyframes burst {
+    0% { transform: scale(0); opacity: 1; }
+    100% { transform: scale(1.5) translate(var(--x), var(--y)); opacity: 0; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- Slide 1 -->
+<div class="slide active">
+  <h1>❤️ Happy Valentine’s Day ❤️</h1>
+  <p>Angle, this is something special just for you 🌹</p>
+  <button onclick="nextSlide()">Next 💕</button>
+</div>
+
+<!-- Slide 2 -->
+<div class="slide">
+  <h1>💌 My Message 💌</h1>
+  <p>
+    You are my happiness,  
+    my calm, and my favorite feeling 💖  
+    Every day is better with you ✨
+  </p>
+  <button onclick="nextSlide()">Next 💖</button>
+</div>
+
+<!-- Slide 3 -->
+<div class="slide">
+  <h1>📸 Us 💞</h1>
+  <img src="her-photo.png" alt="Angle">
+  <p>Will you be my Valentine forever? 💍❤️</p>
+
+  <div class="buttons">
+    <button onclick="yesClicked()">YES 💖</button>
+    <button class="no" id="noBtn">NO 😜</button>
+  </div>
+</div>
+
+<script>
+  // Slide control
+  let current = 0;
+  const slides = document.querySelectorAll(".slide");
+
+  function nextSlide() {
+    slides[current].classList.remove("active");
+    current++;
+    slides[current].classList.add("active");
+  }
+
+  // Floating hearts
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💘";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+  }, 400);
+
+  // NO button runs away 😄
+  const noBtn = document.getElementById("noBtn");
+  noBtn.addEventListener("mouseover", moveNo);
+  noBtn.addEventListener("touchstart", moveNo);
+
+  function moveNo() {
+    noBtn.style.position = "absolute";
+    noBtn.style.left = Math.random() * 220 + "px";
+    noBtn.style.top = Math.random() * 220 + "px";
+  }
+
+  // YES = HEART EXPLOSION 🏆💘
+  function yesClicked() {
+    for (let i = 0; i < 30; i++) {
+      const heart = document.createElement("div");
+      heart.className = "burst";
+      heart.innerHTML = "💖";
+      heart.style.left = "50%";
+      heart.style.top = "50%";
+      heart.style.setProperty("--x", (Math.random()*300 - 150) + "px");
+      heart.style.setProperty("--y", (Math.random()*300 - 150) + "px");
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 1200);
+    }
+
+    setTimeout(() => {
+      alert("She said YES 💍💖\nYou win forever 🏆");
+    }, 400);
+  }
+</script>
+
+</body>
+</html>
