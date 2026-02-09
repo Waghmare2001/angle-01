@@ -26,7 +26,7 @@ button{border:none;border-radius:999px;padding:16px 28px;font-size:1.05rem;font-
 .balloon{position:fixed;bottom:-50px;font-size:2rem;animation:floatUp 6s linear forwards;pointer-events:none}
 .slider{
   width:100%;
-  height:360px; /* optimized for 768x1344 portrait images */
+  height:420px; /* optimized for 768x1344 portrait images */
   border-radius:18px;
   overflow:hidden;
   margin:14px 0
@@ -82,7 +82,7 @@ button{border:none;border-radius:999px;padding:16px 28px;font-size:1.05rem;font-
   <h1>For You… ❤️</h1>
    <p>This is what I wanted to say for so long…<br>Watch the balloons carry my message to you</p>
   <button onclick="loveMessage()">Watch balloons</button>
-  <button onclick="go('p6')">There's  more I want to show you</button>
+  <button onclick="go('p6')">Continue 💌</button>
 
 </div>
 
@@ -93,23 +93,44 @@ button{border:none;border-radius:999px;padding:16px 28px;font-size:1.05rem;font-
     <img src="img2.png">
     <img src="img3.png">
     <img src="img4.png">
+    <img src="img14.png">
+    <img src="img15.png">
   </div>
-  <button onclick="go('p7')">See the message 💌</button>
+  <button onclick="go('p7')">Ready for more ?📸</button>
+
 </div>
 
 <div class="card hidden" id="p7">
+
+  <h3>💞 Our Memories 💞</h3>
+
+  <div class="slider" id="slider">
+    <img src="img5.jpg" style="object-fit: contain;">
+    <img src="img6.jpg" style="object-fit: contain;">
+    <img src="img7.jpg" style="object-fit: contain;">
+    <img src="img8.jpg" style="object-fit: contain;">
+    <img src="img9.jpg" style="object-fit: contain;">
+    <img src="img10.jpg" style="object-fit: contain;">
+    <img src="img11.jpg" style="object-fit: contain;">
+    <img src="img12.jpg" style="object-fit: contain;">
+    <img src="img13.jpg" style="object-fit: contain;">
+  </div>
+  <button onclick="go('p8')">See the message 💌</button>
+</div>
+
+<div class="card hidden" id="p8">
   <h1>My Heart Is Yours ❤️</h1>
   <p>From the moment you came into my life,<br>everything started to change.</p>
   <p>You are not just my friend,<br>you're the most special part of my life.</p>
   <p>i don't know what future holds, but I<br> One thing for sure.<br> I want that future with you.</p>
 
   <h5>Will you be my valentine forever?</h5>
-  <button onclick="heartExplosion()">Yes 💘</button>
+  <button onclick="heartExplosion()">Yes</button>
 </div>
 
 <script>
 function go(id){
-  ['p1','p2','p3','p4','p5','p6','p7'].forEach(p=>{
+  ['p1','p2','p3','p4','p5','p6','p7','p8'].forEach(p=>{
     const el=document.getElementById(p);
     if(el) el.classList.add('hidden');
   });
@@ -133,10 +154,8 @@ function loveMessage(){
         clearInterval(timer);
         setTimeout(()=>{
           const text=document.createElement('h1');
-          text.innerText='❤️';
           text.style.marginTop='20px';
           text.style.animation='pulse 1.5s infinite';
-          holder.appendChild(text);
         },1500);
         return;
       }
@@ -174,4 +193,3 @@ function heartExplosion(){
 </script>
 </body>
 </html>
-
