@@ -47,7 +47,6 @@ button{border:none;border-radius:999px;padding:16px 28px;font-size:1.05rem;font-
 </style>
 </head>
 <body>
-
 <div class="card" id="p1">
   <h1>Hey Angel 💕</h1>
   <div class="heart">💖</div>
@@ -59,8 +58,7 @@ button{border:none;border-radius:999px;padding:16px 28px;font-size:1.05rem;font-
   <h1>Angelie Ballasta</h1>
   <div class="heart">💓</div>
   <p>I have something to tell you…<br>Something that will change everything.</p>
-  <button onclick="go('p3')">Tap to know 💫</button>
-</div>
+<button onclick="playMusic(); go('p3')">Tap to know 💫</button></div>
 
 <div class="card hidden" id="p3">
   
@@ -115,22 +113,52 @@ button{border:none;border-radius:999px;padding:16px 28px;font-size:1.05rem;font-
     <img src="img12.jpg" style="object-fit: contain;">
     <img src="img13.jpg" style="object-fit: contain;">
   </div>
-  <button onclick="go('p8')">See the message 💌</button>
+  <button onclick="go('p8')">Continue 💌</button>
 </div>
-
 <div class="card hidden" id="p8">
+    
+    <h2><strong>❤️ My Angel ❤️</strong></h2>
+
+    <p>
+        Before you, my heart was searching…<br>
+        After you, it finally found its home.
+    </p>
+
+    <p>
+        In your eyes, I see my forever.<br>
+        In your smile, I find my peace.<br>
+        In your love, I discovered a feeling so deep<br>
+        that words will never be enough.
+    </p>
+
+    <p>
+        If I had one wish,<br>
+        it would be to hold your hand forever,<br>
+        every smile, every lifetime.
+    </p>
+
+    <p>
+        You are my heart, my soul, my always.<br>
+        Now and forever. ❤️✨
+    </p>
+
+
+<button onclick="go('p9')">See the message 💌</button>
+
+</div>
+<div class="card hidden" id="p9">
   <h1>My Heart Is Yours ❤️</h1>
   <p>From the moment you came into my life,<br>everything started to change.</p>
-  <p>You are not just my friend,<br>you're the most special part of my life.</p>
+  <p>You are not just someone I care about,<br>you're the heartbeat I never want to lose.</p>
   <p>i don't know what future holds, but I<br> One thing for sure.<br> I want that future with you.</p>
 
-  <h5>Will you be my valentine forever?</h5>
+  <h4>Will you be my valentine forever?</h4>
   <button onclick="heartExplosion()">Yes</button>
 </div>
 
 <script>
 function go(id){
-  ['p1','p2','p3','p4','p5','p6','p7','p8'].forEach(p=>{
+  ['p1','p2','p3','p4','p5','p6','p7','p8','p9'].forEach(p=>{
     const el=document.getElementById(p);
     if(el) el.classList.add('hidden');
   });
@@ -189,6 +217,17 @@ function heartExplosion(){
     document.body.appendChild(h);
     setTimeout(()=>h.remove(),1500);
   }
+}
+</script>
+<audio id="bgMusic" src="song.mp3" preload="auto" loop></audio>
+<script>
+function playMusic(){
+const music=document.getElementById('bgMusic');
+if(music){
+music.volume=0.6;
+const p=music.play();
+if(p!==undefined){p.catch(()=>{});} // mobile autoplay safety
+}
 }
 </script>
 </body>
